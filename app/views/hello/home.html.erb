@@ -1,6 +1,13 @@
-<hr>
-<%= link_to 'Home', root_path %>
-<%= link_to 'About', about_path %>
-<%= link_to 'Tout les Articles', articles_path %>
-<hr>
-<h1>Home</h1>
+<div class="center container">
+    <div class="jumbotron">
+      <h1 class="display-4">Mattltnblog</h1>
+      <p class="lead">Bienvenue sur Mattltnblog.</p>
+      <hr class="my-4">
+      <p>Je vous souhaite une agréable visite sur ce blog.</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">S'inscrire</a>
+        <%= link_to 'About', about_path, class: "btn btn-primary btn-lg" %>
+        <%= link_to 'Blog', articles_path, class: "btn btn-primary btn-lg" %>
+      </p>
+    </div>
+</div>

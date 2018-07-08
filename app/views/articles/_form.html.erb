@@ -9,20 +9,32 @@ Si il y'a une erreur, on affiche tout les messages d'erreur à l'utilisateur
     <% end %>
     </ul>
 <% end %>
- <!-- Boucle qui permet d'afficher un formulaire -->
-<%= form_for @article do |f| %>
-    <!-- Balise title -->
-    <p>
-        <%= f.label :title %><br>
-        <%= f.text_field :title %>
-    </p>
-    <!-- Balise description -->
-    <p>
-        <%= f.label :description %><br>
-        <%= f.text_area :description %>
-    </p>
-    <!-- Balise submit -->
-    <p>
-        <%= f.submit %>
-    </p>
+<div class="row">
+<%= form_for(@article, :html => {class: "form-horizontal", role: "from"}) do |f| %>
+
+    <div class="form-group">
+        <div class="col-sm-2 control-label">
+            <%= f.label :title %>
+        </div>
+        <div class="col-sm-6">
+            <%= f.text_field :title, class: "form-control", placeholder: "Titre" %>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-2 control-label">
+            <%= f.label :description %>
+        </div>
+        <div class="col-sm-6">
+            <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Description" %>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <%= f.submit :Envoyer, class: "btn btn-default" %>
+        </div>
+    </div>
+    
 <% end %>
+</div>

@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
         
         # Si l'article se modifie on affiche un message à l'utilisateur et on le redirige vers son article
         if @article.save
-            flash[:notice]="Article créé"
+            flash[:success]="Article créé"
             redirect_to article_path(@article)
             
         else
@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
     def update
         # Si l'article se modifie on affiche un message à l'utilisateur et on le redirige vers son article
         if @article.update(article_params)
-            flash[:notice]="Article modifié"
+            flash[:success]="Article modifié"
             redirect_to article_path(@article)
         else
             # On reste sur la page edit
@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
     
     def destroy
         @article.destroy
-        flash[:notice]="Article supprimé"
+        flash[:danger]="Article supprimé"
         redirect_to articles_path
     end
 

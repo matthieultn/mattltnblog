@@ -1,9 +1,4 @@
-<hr>
-<%= link_to 'Home', root_path %>
-<%= link_to 'About', about_path %>
-<%= link_to 'Nouvel Article', new_article_path %>
-<hr>
-<h1>Modification d'un Article</h1>
+<h1>Modification de l'Article n°<%= @article.id %></h1>
 
 <!-- 
 Si on y trouve une erreur à l'entrée d'un article on vérifie qu'il il y'a une erreur
@@ -34,3 +29,5 @@ Si il y'a une erreur, on affiche tout les messages d'erreur à l'utilisateur
         <%= f.submit %>
     </p>
 <% end %>
+<%= link_to 'Retour à la liste', articles_path %> | 
+<%= link_to 'Afficher cette article', article_path(@article) %>

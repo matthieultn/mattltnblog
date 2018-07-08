@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+    
+    
     def new 
         # On récupère un nouvel article
         @article = Article.new
@@ -34,7 +36,7 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
         
         # Si l'article se modifie on affiche un message à l'utilisateur et on le redirige vers son article
-        if @article.update
+        if @article.update(article_params)
             flash[:notice]="Article bel et bien modifié"
             redirect_to article_path(@article)
         else
@@ -43,6 +45,10 @@ class ArticlesController < ApplicationController
         end
     end
     
+    def index
+        @articles = Article.all
+    end
+
     private
     
     def article_params

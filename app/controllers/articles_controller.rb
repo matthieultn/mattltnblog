@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-    
+    before_action :set_article, only: [:edit, :update, :show, :destroy]
     
     def new 
         # On récupère un nouvel article
@@ -22,19 +22,12 @@ class ArticlesController < ApplicationController
     end
     
     def show
-        # On récupère l'ID de l'article
-        @article = Article.find(params[:id])
     end
     
     def edit
-        # On récupère l'ID de l'article
-        @article = Article.find(params[:id])
     end
     
     def update
-        # On récupère l'ID de l'article
-        @article = Article.find(params[:id])
-        
         # Si l'article se modifie on affiche un message à l'utilisateur et on le redirige vers son article
         if @article.update(article_params)
             flash[:notice]="Article modifié"
@@ -50,16 +43,18 @@ class ArticlesController < ApplicationController
     end
     
     def destroy
-        # On récupère l'ID de l'article
-        @article = Article.find(params[:id])
         @article.destroy
         flash[:notice]="Article supprimé"
         redirect_to articles_path
     end
 
     private
-    
-    def article_params
-     params.require(:article).permit(:title, :description)
-    end
+        def set_article
+            # On récupère l'ID de l'article
+            @article = Article.find(params[:id])
+        end
+        
+        def article_params
+            params.require(:article).permit(:title, :description)
+        end
 end
